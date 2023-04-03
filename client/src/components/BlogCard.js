@@ -1,6 +1,7 @@
 import React from "react";
 import AddComment from "./AddComment";
-// import image1 from "../images/image1.jpeg";
+import Blog from "./Blog";
+import image1 from "../images/image1.jpeg";
 
 function BlogCard({
   id,
@@ -14,9 +15,9 @@ function BlogCard({
 }) {
   return (
     <div className="blogcard">
-      {/* <div className="image">
+      <div className="image">
         <img src={image1} alt="blogImage" />
-      </div> */}
+      </div>
 
       <div>
         <h5 className="title">{title}</h5>

@@ -26,7 +26,7 @@ function LoginForm({ onLogin }) {
           navigate("/");
         });
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.errors || []));
       }
     });
   }
@@ -34,13 +34,14 @@ function LoginForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="main">
-        {errors.map((error) => {
-          return (
-            <p style={{ color: "white" }} key={error}>
-              {error}
-            </p>
-          );
-        })}
+        {errors &&
+          errors.map((error) => {
+            return (
+              <p style={{ color: "white" }} key={error}>
+                {error}
+              </p>
+            );
+          })}
         <div>
           <div>
             <h1>Login</h1>
@@ -59,7 +60,6 @@ function LoginForm({ onLogin }) {
                 type="password"
                 placeholder="password"
                 className="name"
-                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

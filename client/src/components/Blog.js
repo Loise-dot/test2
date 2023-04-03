@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import DeleteComment from "./DeleteComment";
 import EditComment from "./EditComment";
+import AddComment from "./AddComment";
 
 function Blog({ user, setUser }) {
   const [blog, setBlog] = useState([]);
@@ -14,7 +15,7 @@ function Blog({ user, setUser }) {
       .then((response) => response.json())
       .then((data) => setCommentData(data));
   }, []);
-
+  // console.log(data);
   useEffect(() => {
     fetch("/blogs")
       .then((response) => response.json())
@@ -24,21 +25,20 @@ function Blog({ user, setUser }) {
   return (
     <div>
       {blog.map((item) => {
-        // console.log(item);
         return (
           <BlogCard
-            user={user}
-            setUser={setUser}
-            commentData={commentData}
-            setCommentData={setCommentData}
             key={item.key}
             blogid={item.id}
             title={item.title}
             description={item.description}
             comments={item.comments.map((itemcomment) => {
+              // Check if the 'user' property exists in the comment object
+              if (!itemcomment.user) {
+                return null;
+              }
               return (
                 <div>
-                  <p style={{ "font-style": "italic" }}>
+                  <p style={{ fontStyle: "italic" }}>
                     By: {itemcomment.user.username}
                   </p>
                   <p>{itemcomment.user_comment}</p>
@@ -47,7 +47,7 @@ function Blog({ user, setUser }) {
                       <EditComment
                         key={itemcomment.id}
                         id={itemcomment.id}
-                        user={itemcomment.user.name}
+                        user={itemcomment.user.username}
                         user_comment={itemcomment.user_comment}
                         commentData={commentData}
                         setCommentData={setCommentData}
@@ -70,6 +70,10 @@ function Blog({ user, setUser }) {
                 </div>
               );
             })}
+            user={user}
+            setUser={setUser}
+            commentData={commentData}
+            setCommentData={setCommentData}
           />
         );
       })}

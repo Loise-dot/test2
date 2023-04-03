@@ -1,27 +1,32 @@
 class BlogsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
-    rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 
     def index
-        render json: Blog.all, include: ["comments", "comments.user"]
+        render json: Blog.all
     end
-
     def show
         blog = Blog.find_by!(id: params[:id])
         render json: blog, status: :ok
     end
 
     def update
-        blog= Blog.find_by!(id: params[:id])
+        blog = Blog.find_by!(id: params[:id])
         blog.update(description: params[:description])
         render json: blog, status: :accepted
     end
+      
 
     def create 
-        blog = Blog.create!(blog_params)
+        user = User.find(session[:user_id])
+        blog = user.blogs.create!(blog_params)
         render json: blog, status: :created
     end
-
+    def destroy
+        blog = Blog.find_by(id: params[:id])
+        blog.destroy
+        head :no_content
+    end
 
     private
     def not_found_response
@@ -37,4 +42,14 @@ class BlogsController < ApplicationController
     def unprocessable_entity_response(invalid)
         render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
+    private
+    def blog_params
+        params.permit :user_title, :user_description
+    end
+
+    def unprocessable_entity_response(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    end
+
 end
+

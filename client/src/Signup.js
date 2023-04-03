@@ -31,10 +31,10 @@ function Signup({ onLogin }) {
       if (r.ok) {
         r.json().then((user) => {
           onLogin(user);
-          navigate("/");
+          navigate("/login");
         });
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => alert(err.errors));
       }
     });
   }

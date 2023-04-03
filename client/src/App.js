@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Redirect,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import About from "./About";
+import Blog from "./components/Blog";
 import LoginForm from "./LoginForm";
 import Signup from "./Signup";
 import NavBar from "./NavBar";
@@ -39,7 +34,7 @@ function App() {
           path="/"
           element={<Home user={user} setUser={setUser} />}
         />
-        {/* <Route exact path= '/about' element={<About/>} /> */}
+        <Route exact path="/blog" element={<Blog />} />
         <Route exact path="/login" element={<LoginForm />} />
         <Route exact path="/signup" element={<Signup />} />
       </Routes>

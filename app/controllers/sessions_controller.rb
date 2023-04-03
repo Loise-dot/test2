@@ -1,35 +1,27 @@
-class SessionsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
-    rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
-  
-    def new
-      render "sessions/new"
-    end
-  
-    def create
-      user = User.find_by(username: params[:username])
+class SessionsController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+  # protect_from_forgery with: :null_session
+  def create
+    user = User.find_by(username: params[:username])
+    if user
       if user&.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect_to root_url, notice: 'Logged in!'
+          session[:user_id] = user.id
+          render json: user, status: :ok
       else
-        flash.now[:alert] = 'Invalid username or password'
-        render :new
+          render json: {errors: 'Invalid Password or Username'}, status: :unauthorized
       end
     end
+  end
   
-    def destroy
-      session.delete :user_id
-      redirect_to root_url, notice: 'Logged out!'
+
+  
+  def destroy
+    if session[:user_id]
+        session.delete :user_id
+        head :no_content
     end
-  
-    private
-  
-    def not_found_response
-      render json: { error: 'User not found' }, status: :not_found
-    end
-  
-    def unprocessable_entity_response(invalid)
-      render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    end
+   
+  end
 end
-  
+
+

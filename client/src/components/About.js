@@ -6,11 +6,11 @@ function About() {
     <div>
       <div className="major">
         <div className="head">
-          <h1>About CampKe</h1>
+          <h1>About TheCamp</h1>
         </div>
         <div className="infor">
           <p>
-            CampKe is a PLA camping enthusiasts who, for over 10 years, have
+            TheCamp is a PLA camping enthusiasts who, for over 10 years, have
             joined together to share knowledge and experience and to ensure the
             quality of camp programs in line with the Tembea Kenya Initiative.
             Because of the diverse membership and exceptional programs, children

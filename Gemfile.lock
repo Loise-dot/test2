@@ -84,15 +84,19 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     io-console (0.6.0)
     irb (1.6.3)
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
-    loofah (2.19.1)
+    loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.1)
@@ -102,7 +106,9 @@ GEM
       net-smtp
     marcel (1.0.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.1)
     minitest (5.18.0)
     msgpack (1.7.0)
     net-imap (0.3.4)
@@ -115,6 +121,9 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
+    nokogiri (1.14.2)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     puma (5.6.5)
@@ -154,6 +163,10 @@ GEM
     rake (13.0.6)
     reline (0.3.3)
       io-console (~> 0.5)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
+    sqlite3 (1.6.2)
+      mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.2-x86_64-linux)
     thor (1.2.1)
     timeout (0.3.2)
@@ -165,6 +178,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -173,14 +187,12 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
+  image_processing (~> 1.2)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.3)
   sqlite3 (~> 1.4)
   tzinfo-data
-
-RUBY VERSION
-   ruby 2.7.4p191
 
 BUNDLED WITH
    2.4.10

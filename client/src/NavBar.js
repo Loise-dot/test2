@@ -19,11 +19,11 @@ function NavBar({ user, setUser }) {
             Home
           </Link>
         </li>
-        {/* <li>
-          <Link className="nav-link" to="/about">
-            About
+        <li>
+          <Link className="nav-link" to="/blog">
+            Blogs
           </Link>
-        </li> */}
+        </li>
 
         <li>
           <Link className="nav-link" to="/login">

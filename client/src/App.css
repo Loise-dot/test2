@@ -1,13 +1,20 @@
-.homepage {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./images/image12.jpeg");
+/* .homepage {
+  background-image: url("./images/image12.jpeg");
   background-size: cover;
   /* padding: 0px 0 250px 0; */
-  padding: 150px;
-  background-position: center;
+background-repeat: no-repeat;
+background-position: center;
+height: 100vh;
+width: 100vw;
+display: flex;
+flex-direction: row;
+
+.blog-display {
+  height: 100vh;
+  background-color: red;
 }
+
 .page {
-  background-color: rgb(114, 52, 8);
   color: white;
 }
 .paragraph {
@@ -31,9 +38,12 @@
   position: relative;
   display: flex;
   margin-left: 80px;
+  width: 100%;
 }
 .image {
   margin-right: 60px;
+  width: 100px;
+  height: 100px;
 }
 .btn1 {
   background-color: white;
@@ -67,10 +77,11 @@
 }
 
 .body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./images/image3.jpg");
-  background-size: cover;
-  padding: 60px 0 220px 0;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./images/image3.jpg"); */
+  /* background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
 }
 
 .text {
@@ -129,10 +140,11 @@ a {
   margin-left: 200px;
   border-radius: 15px;
   border-block-color: orange;
-  background-color: rgb(2, 55, 55);
+  background-color: rgb(6, 57, 43);
   opacity: 90%;
+}
 
-  margin-top: 100px;
+/* margin-top: 100px;
   padding-left: 120px;
   padding-right: 150px;
 }
@@ -151,4 +163,4 @@ a {
   display: inline;
   padding-left: 150px;
   color: orange;
-}
+} */
