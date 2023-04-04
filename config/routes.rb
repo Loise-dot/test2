@@ -17,9 +17,6 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   
   
-  get '/blogs', to: 'blogs#index'
-  post '/blogs', to: 'blogs#create'
-  post '/blogs/:id', to: 'blogs#update'
-
+  
   
 end

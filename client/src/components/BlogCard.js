@@ -1,5 +1,6 @@
 import React from "react";
 import AddComment from "./AddComment";
+import "./App.css";
 // import image1 from "../images/image1.jpeg";
 
 function BlogCard({
