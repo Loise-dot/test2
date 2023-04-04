@@ -18,8 +18,7 @@ class BlogsController < ApplicationController
       
 
     def create 
-        user = User.find(session[:user_id])
-        blog = user.blogs.create!(blog_params)
+        blog = Blog.create!(blog_params)
         render json: blog, status: :created
     end
     def destroy
